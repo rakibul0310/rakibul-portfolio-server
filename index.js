@@ -18,23 +18,12 @@ app.use(express.json());
 // connect with database
 connectDB();
 
-app.post("/post", async (req, res) => {
-  db.query(
-    "CREATE TABLE BLOG(ID int(20) NOT NULL AUTO_INCREMENT, TITLE varchar(100) NOT NULL, BODY varchar(100) NOT NULL, PRIMARY KEY(ID))",
-    (error, results) => {
-      if (error) throw error;
-      console.log(results);
-      res.send(results);
-    }
-  );
-});
-
 // base API
 app.get("/", (req, res) => {
-  res.header(
-    "Access-Control-Allow-Origin"
-    // "https://blended-learning-center.netlify.app"
-  );
+  // res.header(
+  //   "Access-Control-Allow-Origin",
+  //   "https://blended-learning-center.netlify.app"
+  // );
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.send("Hello Buddy !");
 });
