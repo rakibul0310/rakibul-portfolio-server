@@ -3,7 +3,7 @@ const cors = require("cors");
 const { connectDB, db } = require("./config/db");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
-// const publicRoutes = require("./routes/publicRoutes/index");
+const authRoute = require("./Routes/authRoutes");
 
 const app = express();
 
@@ -17,6 +17,10 @@ app.use(express.json());
 
 // connect with database
 connectDB();
+
+// endpoints
+app.use("/api/v1/auth", authRoute);
+// app.use("/api/v1/blogs");
 
 // base API
 app.get("/", (req, res) => {
